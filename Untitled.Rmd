@@ -1,0 +1,29 @@
+---
+title: "explanation"
+output:
+  pdf_document: default
+  html_document: default
+---
+Run those functions:
+
+```{r eval=FALSE}
+install.packages("devtools")
+install.packages("shiny")
+install.packages("shinysky")
+install.packages("shinydashboard")
+install.packages("bbmle")
+install.packages("ggplot2")
+```
+
+Then you will need to load the devtools library:
+
+```{r eval=FALSE}
+library(devtools)
+```
+
+Then run that:
+```{r eval=FALSE}
+devtools::install_github("AnalytixWare/ShinySky")
+```
+
+After that you can run the App
