@@ -3,7 +3,7 @@
 #' Function that allows to run the ShinyApp.
 #' @export
 
-LoadApp <- function () {
+loadApp <- function () {
   library(shiny)
   library(shinysky)
   library(shinydashboard)
