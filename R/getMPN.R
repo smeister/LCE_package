@@ -13,8 +13,7 @@ getMPN=function(y,n,v){
     return(NA)
   } else{
     MPN=as.vector(mle2(function(mu){sum(suppressWarnings((n-y)*mu*v-y*log(1-exp(-mu*v))))},start=list(mu=1),method="SANN",optimizer="nlminb")@details$par)
-    #profMPN=mle2(function(mu){sum(suppressWarnings((n-y)*mu*v-y*log(1-exp(-mu*v))))},start=list(mu=1),method="SANN",optimizer="nlminb")
-    #plot(profile(profMPN))
     return(MPN)
   }
 }
+
