@@ -171,9 +171,6 @@ ui <- navbarPage("LCE",
                                               )
                                        )
                                      )
-                            ),
-                            tabPanel("getCT",
-                              em("blabla")
                             )
                  ),
                  navbarMenu("Fluence/Dose Calculation",
@@ -632,14 +629,7 @@ server <- function (input, output) {
         labs(y = yLabel)
     })
   })
-
   ##################### Virus Database ##################
   #######################################################
-
 }
-
-
 shinyApp(server = server, ui = ui)
-
-
-
