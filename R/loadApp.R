@@ -555,24 +555,24 @@ loadApp <- function () {
       b
     }
     output$sungraph1 <- renderPlot({
-      sunlamp<-data.frame(read.csv2("./Data/sunlamp1.csv", header = TRUE, colClasses = "numeric", dec = "."))
+      sunlamp<-data.frame(read.csv2("./virus/Data/sunlamp1.csv", header = TRUE, colClasses = "numeric", dec = "."))
       plotplot2(par(mar=c(4, 4, 0, 1)), plot(sunlamp$WL_nm, sunlamp$Abs_Irradiance, type = "l", ylab = "Absolute Irradiance", xlab = "Wavelength [nm]"))
     })
     output$sungraph2 <- renderPlot({
-      sunlamp<-data.frame(read.csv2("./Data/sunlamp2.csv", header = TRUE, colClasses = "numeric", dec = "."))
+      sunlamp<-data.frame(read.csv2("./virus/Data/sunlamp2.csv", header = TRUE, colClasses = "numeric", dec = "."))
       plotplot2(par(mar=c(4, 4, 0, 1)), plot(sunlamp$WL_nm, sunlamp$Abs_Irradiance, type = "l", ylab = "Absolute Irradiance", xlab = "Wavelength [nm]"))
     })
 
     # Observe
     observe({
       if (input$sundata == "new lamp") {
-        sunlamp<-data.frame(read.csv2("./Data/sunlamp2.csv", header = TRUE, colClasses = "numeric", dec = "."))
+        sunlamp<-data.frame(read.csv2("./virus/Data/sunlamp2.csv", header = TRUE, colClasses = "numeric", dec = "."))
         output$sunfluence <- renderText({
           ((sum(sunlamp$corr2[sunlamp$WL_nm >= input$sunslider[1] & sunlamp$WL_nm <= input$sunslider[2]]))/100)
         })
       } else {
         if (input$sundata == "old lamp") {
-          sunlamp<-data.frame(read.csv2("./Data/sunlamp1.csv", header = TRUE, colClasses = "numeric", dec = "."))
+          sunlamp<-data.frame(read.csv2("./virus/Data/sunlamp1.csv", header = TRUE, colClasses = "numeric", dec = "."))
           output$sunfluence <- renderText({
             ((sum(sunlamp$corr2[sunlamp$WL_nm >= input$sunslider[1] & sunlamp$WL_nm <= input$sunslider[2]]))/100)
           })
@@ -589,7 +589,7 @@ loadApp <- function () {
 
     observeEvent(input$clickSUN, {
       if (input$sundata == "new lamp") {
-        sunlamp<-data.frame(read.csv2("./Data/sunlamp2.csv", header = TRUE, colClasses = "numeric", dec = "."))
+        sunlamp<-data.frame(read.csv2("./virus/Data/sunlamp2.csv", header = TRUE, colClasses = "numeric", dec = "."))
         Fluence <- ((sum(sunlamp$corr2[sunlamp$WL_nm >= input$sunslider[1] & sunlamp$WL_nm <= input$sunslider[2]]))/100)
         suntimestable2 <- hot.to.df(input$suntimestable)
         colnames(suntimestable2)[1] <- "Dose"
@@ -603,7 +603,7 @@ loadApp <- function () {
         })
       } else {
         if (input$sundata == "old lamp") {
-          sunlamp<-data.frame(read.csv2("./Data/sunlamp1.csv", header = TRUE, colClasses = "numeric", dec = "."))
+          sunlamp<-data.frame(read.csv2("./virus/Data/sunlamp1.csv", header = TRUE, colClasses = "numeric", dec = "."))
           Fluence <- ((sum(sunlamp$corr2[sunlamp$WL_nm >= input$sunslider[1] & sunlamp$WL_nm <= input$sunslider[2]]))/100)
           suntimestable2 <- hot.to.df(input$suntimestable)
           colnames(suntimestable2)[1] <- "Dose"
@@ -626,7 +626,7 @@ loadApp <- function () {
     }
 
     observe({
-      datapath <- paste("./Data/", input$sundataAmp, sep = "")
+      datapath <- paste("./virus/Data/", input$sundataAmp, sep = "")
       print(datapath)
       output$sunAmp <- renderPlot({
         sunlAmp<-data.frame(read.csv2(datapath, header = TRUE, colClasses = "numeric", dec = "."))
@@ -644,20 +644,20 @@ loadApp <- function () {
 
     ## Database ########
     output$viruses <- renderDataTable(
-      read.csv2("./Data/Virus_CT_list2.csv", header = TRUE)
+      read.csv2("/virus/Data/Virus_CT_list2.csv", header = TRUE)
     )
     output$saveDatabase <- downloadHandler(
       filename = function () {
         paste("data", ".csv", sep="")
       },
       content <- function(file) {
-        df <- read.csv2("./Data/Virus_CT_list2.csv", header = TRUE)
+        df <- read.csv2("./virus/Data/Virus_CT_list2.csv", header = TRUE)
         write.table(df, file, sep=";", dec=".", row.names = FALSE)
       }
     )
 
-    ## Graphs Display ######## "./Data/virus_CT_list2.csv"
-    df_virus<-data.frame(read.csv2("./Data/Virus_CT_list2.csv", header = TRUE, dec = "."))
+    ## Graphs Display ######## "./virus/Data/virus_CT_list2.csv"
+    df_virus<-data.frame(read.csv2("./virus/Data/Virus_CT_list2.csv", header = TRUE, dec = "."))
     observe({
       df_virus2 <- df_virus[df_virus$Disinfectant == input$virusdisinf,] # OKAY
       if (input$virusdisinf == "UV" | input$virusdisinf == "Sunlight") {
