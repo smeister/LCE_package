@@ -1,3 +1,5 @@
+#' GetK function
+#'
 #' @export
 getK=function(d,r,plot=F){ # r is to choose the replicate
   if(missing(r)){

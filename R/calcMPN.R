@@ -1,3 +1,6 @@
+#' Linking function for the ShinyApp
+#'
+#' Should not be modified by users
 #' @export
 calcMPN <- function (df) {
   new_df2<-df

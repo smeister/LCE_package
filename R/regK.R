@@ -1,3 +1,5 @@
+#' regK function
+#'
 #' @export
 regK=function(d,r){
   if(missing(r)){

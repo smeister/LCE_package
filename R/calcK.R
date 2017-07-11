@@ -1,3 +1,6 @@
+#' Linking function for the ShinyApp
+#'
+#' Should not be modified by users
 #' @export
 calcK <- function (dataLIST, timeLIST, replicate, graph = FALSE) {
   # Empty vectors
