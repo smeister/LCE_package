@@ -598,7 +598,6 @@ server <- function (input, output) {
   ## Database ########
   output$viruses <- renderDataTable(
     Virus_CT_list2
-    #read.csv2("./virus/data/Virus_CT_list2.csv", header = TRUE)
   )
   output$saveDatabase <- downloadHandler(
     filename = function () {
