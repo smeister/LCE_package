@@ -177,9 +177,6 @@ loadApp <- function () {
                                                 )
                                          )
                                        )
-                              ),
-                              tabPanel("getCT",
-                                       em("blabla")
                               )
                    ),
                    navbarMenu("Fluence/Dose Calculation",
