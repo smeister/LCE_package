@@ -1,6 +1,6 @@
 #' App function
 #'
-#' Function that allows to run the ShinyApp.
+#' Function that allows to run the ShinyApp. blabla
 #' @export
 
 loadApp <- function () {
